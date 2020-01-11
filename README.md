@@ -1,5 +1,5 @@
 # WebAudioPlayer
-Nhập môn kỹ thuật phần mềm FPoly 14302-UD
+## Nhập môn kỹ thuật phần mềm FPoly 14302-UD
 
 Font: Google Font Roboto
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
