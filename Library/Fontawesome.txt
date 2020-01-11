@@ -1,0 +1,5 @@
+Icon: Fontawesome
+
+	<link href="http://pc.hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
+
+	Website: https://fontawesome.com/
