@@ -11,4 +11,4 @@ CSS: font-family: 'Roboto', sans-serif;
 ```sh
 HTML: <link href="http://pc.hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
 ```
-	Website: [Fontawesome](https://fontawesome.com/)
+Website: [Fontawesome](https://fontawesome.com/)
