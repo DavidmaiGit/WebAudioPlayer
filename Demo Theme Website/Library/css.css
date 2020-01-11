@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+	font-family: 'Roboto', sans-serif;
+}
+
+/*Header*/
+header {
+	max-width: 1920px;
+	max-height: 128px;
+	width: 1920px;
+	height: 128px;
+	margin: 0 auto;
+	background-size: initial;
+	background-image: url("Image/BackGround-Header.jpg")!important;
+}
+#HD-main {
+	background-size: initial;
+	background-image: url("Image/BackGround-Header.jpg")!important;
+	max-width: 1920px;
+	max-height: 128px;
+}
+#HD-filter {
+	max-width: 1080px;
+	max-height: 50px;
+	margin: auto;
+}
+#HD-logo {
+	width: 250px;
+	height: 50px;
+/*	background-color: rgba(0,0,0,0.20);*/
+	margin: 10px 20px 0 0;
+}
+#HD-search {
+	max-height: 50px;
+	height: 50px;
+/*	background-color: rgba(0,0,0,0.30);*/
+	margin-top: 10px;
+}
+#HD-login {
+	max-width: 250px;
+	width: 250px;
+	height: 50px;
+/*	background-color: rgba(0,0,0,0.20);*/
+	margin: 10px 0 0 20px;
+}
+#HD-menu {
+	max-width: 1080px;
+	max-height: 58px;
+	width: 100%;
+	height: 58px;
+	margin: auto;
+	margin-top: 20px;
+/*	background-color: rgba(0,0,0,0.30);*/
+}
+.mMenu {
+	line-height: 2.4;
+	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
+	color: #666666;
+	margin: 0 0 0 5px;
+}
+.mMenu:hover {
+	text-decoration: none;
+}
+.mActive {
+	border-color: #e91e63!important;
+}
+
+/*Footer*/
+footer {
+	max-width: 100%;
+	max-height: 173px;
+	width: 100%;
+	height: 173px;
+	margin: 0 auto;
+	background-color: #fbfbfb;
+	text-align: center;
+	padding: 27px 0px;
+	color: #666666;
+}
+footer i {
+	font-size: 45px;
+}
+footer h1 {
+	font-size: 20px;
+	letter-spacing: 0.5px;
+	line-height: 1em;
+}
+footer a {
+	text-decoration: none;
+}
