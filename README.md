@@ -9,7 +9,10 @@ CSS: font-family: 'Roboto', sans-serif;
 	
 ## Icon: Fontawesome
 ```sh
+HTML: <link href="http://hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
 HTML: <link href="http://pc.hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
 ```
 
 **Website:** [Fontawesome](https://fontawesome.com/)
+
+**Download Icon Pro:** [Download](https://hyperflex.vn/Library/fontawesome-pro-5.12.0.zip)
