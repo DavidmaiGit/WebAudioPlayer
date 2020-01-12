@@ -79,7 +79,6 @@ footer {
 	text-align: center;
 	padding: 27px 0px;
 	color: #666666;
-	cursor: default;
 }
 footer i {
 	font-size: 45px;
@@ -91,4 +90,13 @@ footer h1 {
 }
 footer a {
 	text-decoration: none;
+}
+
+/*404 Page*/
+#p404 {
+	max-width: 1920px;
+	width: 400px;
+	margin: 100px auto 0 auto;
+	color: #666666;
+/*	background-color: rgba(0,0,0,0.10);*/
 }
