@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>AudioPlayer</title>
+	<link href="http://hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="Library/css.css" rel="stylesheet">
+	
+<!--	bootstrap 4-->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</head>
+
+<body>
+	<div id="audioPlayer" class="w3-row">
+		<img class="apBG" src="https://hyperflex.vn/wp-content/uploads/2020/01/Untitled-1.png">
+		<div class="w3-col apCOL1">
+			<img id="avatarIMG" class="apIMG" src="https://hyperflex.vn/wp-content/uploads/2020/01/Untitled-1.png">
+		</div>
+		<div class="w3-col apCOL2">
+			<div>
+				<span id="apTitle" style="font-size: 24px; color: #fcfcfc; text-transform: capitalize;"><strong>Có chàng trai viết lên cây</strong></span>
+				<br>
+				<span id="apSinger" style="font-size: 14px; color: #fcfcfc;">Phan Mạnh Quỳnh</span>
+				<div style="color: #A0A0A0; font-size: 14px; margin-top: 26px">
+					<div style="padding: 0 0 3px 0;">
+						<span>Album: </span><span id="apAlbum">Album Sing My Song season 1 - Team Nguyễn Hải Phong</span>
+					</div>
+					<div style="padding: 0 0 3px 0;">
+						<span>Sáng tác: </span><span id="apAuthor">Phan Mạnh Quỳnh</span>
+					</div>
+					<div>
+						<span>Thể loại: </span><span id="apCategory">Việt Nam, Nhạc Trẻ, V-Pop, R&B Việt</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w3-col apCOL3">
+			<div class="apShare w3-bar">
+				<div class="w3-bar-item w3-right">
+					<a style="color: #666666" href="#" data-placement="bottom" data-toggle="popover" data-trigger="focus" data-content="Đã sao chép"><i class="fal fa-link" style="padding: 10px; font-size: 15px; background-color: #FFFFFF; border-radius: 25px; cursor: pointer;" onClick="copyURL()"></i></a>
+					<input type="text" id="apInputGetLink" style="z-index: -1; position: absolute; width: 10px; filter: opacity(0);">
+				</div>
+			</div>
+			
+			<div class="w3-row" style="color: #FFFFFF; text-align: right; font-size: 20px; margin-top: 72px; cursor: default;">
+				<div class="w3-col" style="width: 50%;">
+					<span style="padding-right: 5px;"><i class="fad fa-play"></i></span><strong><span id="apLuotNghe">53.4M</span></strong>
+				</div>
+				<div class="w3-col" style="width: 50%;">
+					<span style="padding-right: 5px;"><i class="fad fa-heart"></i></span><strong><span id="apLuotYeuThich">53.4M</span></strong>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="audioPlayerController" class="w3-row">
+		<audio id="audioPlayerMain" style="width: 100%" onTimeUpdate="updateAudio()" onEnded="endedPlayer()">
+		<source src="http://pc.hyperflex.vn/b.mp3" type="audio/mpeg">
+		</audio>
+		<div id="apcControll" class="w3-col">
+			<div class="w3-row">
+				<div class="w3-col apcBack"><i class="fas fa-step-backward"></i></div>
+				<div id="playPlay" class="w3-col apcPlay" style="display: block;" onClick="togglePlay()"><i class="fas fa-play"></i></div>
+				<div id="playPause" class="w3-col apcPlay" style="display: none;" onClick="togglePlay()"><i class="fas fa-pause"></i></div>
+				<div class="w3-col apcNext"><i class="fas fa-step-forward"></i></div>
+				<div id="loop" class="w3-col apcLoop" onClick="toggleLoop()"><i class="fal fa-undo"></i></div>
+			</div>
+		</div>
+		<div id="apcSlider" class="w3-col">
+			<div class="apcTitle">
+				<span style="float: left; margin: 0 0 0 20px; color: #FFFFFF"><span>Có Chàng Trai Viết Lên Cây</span></span>
+				<span style="float: right; margin: 0 20px 0 0; color: #A0A0A0; cursor: default">
+					<span id="second" style="color: #FFFFFF">00:00</span>/<span id="totalSecond">00:00</span>
+				</span>
+			</div>
+			<br>
+			<div>
+				<div id="apcRange">
+					<div id="apcRangeLoadTr"></div>
+					<div id="apcRangeLoad" class="w3-display-container">
+						<span id="apcPoint" class="w3-display-right"><i class="fad fa-circle"></i></span>
+					</div>
+					<input id="filterLoad" type="range" value="0" class="apcFilterRange" onChange="clickFilterLoadMove()">
+				</div>
+			</div>
+		</div>
+		<div id="apcMore" class="w3-col w3-right">
+			<div class="w3-row">
+				<div id="volumeOn" class="w3-col apcVolume" style="display: block;" onClick="toggleVolume()"><i class="fal fa-volume-up"></i></div>
+				<div id="volumeOff" class="w3-col apcVolume" style="display: none;" onClick="toggleVolume()"><i class="fal fa-volume-slash"></i></div>
+				<div id="loved" class="w3-col apcLove" style="display: none;" onClick="toggleLove()"><i class="fas fa-heart"></i></div>
+				<div id="nonLove" class="w3-col apcLove" style="display: block;" onClick="toggleLove()"><i class="fal fa-heart"></i></div>
+				<div class="w3-col apcDownload"><i class="far fa-download"></i></div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		
+		var audioPlayer = document.getElementById("audioPlayerMain");
+		
+		var playing = false;
+		var loved = false;
+		var volume = true;
+		var loop = false;
+		
+		$(document).ready(function(){
+		  $('[data-toggle="popover"]').popover();   
+		});
+		function copyURL() {
+			var link = document.location.href;
+			document.getElementById("apInputGetLink").value = link;
+			var ina = document.getElementById("apInputGetLink");
+			ina.select();
+			ina.setSelectionRange(0, 99999);
+			document.execCommand("copy");
+		}
+		
+		function togglePlay() {
+			if(playing == true) {
+				document.getElementById("playPlay").style.display = "block";
+				document.getElementById("playPause").style.display = "none";
+				audioPlayer.pause();
+				playing = false;
+				return;
+			}
+			if(playing == false) {
+				document.getElementById("playPause").style.display = "block";
+				document.getElementById("playPlay").style.display = "none";
+				audioPlayer.play();
+				playing = true;
+				return;
+			}
+		}
+		
+		function endedPlayer() {
+			document.getElementById("playPlay").style.display = "block";
+			document.getElementById("playPause").style.display = "none";
+			audioPlayer.pause();
+			playing = false;
+		}
+		
+		function toggleLoop() {
+			if(loop == true) {
+				document.getElementById("loop").style.color = "#FFFFFF";
+				audioPlayer.loop = false;
+				loop = false;
+				return;
+			}
+			if(loop == false) {
+				document.getElementById("loop").style.color = "#A28CE0";
+				audioPlayer.loop = true;
+				loop = true;
+				return;
+			}
+		}
+		
+		function toggleLove() {
+			if(loved == false) {
+				document.getElementById("nonLove").style.display = "none";
+				document.getElementById("loved").style.display = "block";
+				loved = true;
+				return;
+			}
+			if(loved == true) {
+				document.getElementById("loved").style.display = "none";
+				document.getElementById("nonLove").style.display = "block";
+				loved = false;
+				return;
+			}
+		}
+		
+		function toggleVolume() {
+			if(volume == false) {
+				document.getElementById("volumeOff").style.display = "none";
+				document.getElementById("volumeOn").style.display = "block";
+				audioPlayer.volume = 1;
+				volume = true;
+				return;
+			}
+			if(volume == true) {
+				document.getElementById("volumeOn").style.display = "none";
+				document.getElementById("volumeOff").style.display = "block";
+				audioPlayer.volume = 0;
+				volume = false;
+				return;
+			}
+		}
+		
+		function filterLoadMove() {
+			var current = audioPlayer.currentTime;
+			var duration = audioPlayer.duration;
+			var x = (current/duration)*100;
+			document.getElementById("apcRangeLoad").style.width = x + "%";
+		}
+		
+		function clickFilterLoadMove() {
+			var current = document.getElementById("filterLoad").value;
+			var duration = audioPlayer.duration;
+			var x = (current/100)*duration;
+			audioPlayer.currentTime = x;
+			document.getElementById("apcRangeLoad").style.width = current + "%";
+		}
+		
+		function loadDuration() {
+			var duration = audioPlayer.duration;
+			var dur = duration.toString();
+			var durf = dur.substring(0, dur.length - 7);
+			var sec = parseInt(durf % 60);
+			var secf = sec.toString();
+			secf = (secf.length == 1) ? "0"+secf : secf;
+			var min = parseInt(durf / 60);
+			var minf = min.toString();
+			minf = (minf.length == 1) ? "0"+minf : minf;
+			document.getElementById("totalSecond").innerHTML = minf + ":" + secf;
+		}
+		
+		function loadCurrentTime() {
+			var current = parseInt(audioPlayer.currentTime);
+			var sec = parseInt(current % 60).toString();
+			var secf = (sec.length == 1) ? "0"+sec : sec;
+			var min = parseInt(current / 60).toString();
+			var minf = (min.length == 1) ? "0"+min : min;
+			document.getElementById("second").innerHTML = minf + ":" + secf;
+		}
+		
+		function loadBuffered() {
+			var xx = audioPlayer.buffered.end(0);
+			var duration = audioPlayer.duration;
+			var x = (xx/duration)*100;
+  			document.getElementById("apcRangeLoadTr").style.width = x + "%";
+		}
+		
+		function updateAudio() {
+			filterLoadMove();
+			loadBuffered();
+			loadCurrentTime();
+		}
+		
+//		loadJoin
+		setTimeout(function(){
+			loadDuration();
+		},3000);
+	</script>
+</body>
+</html>
