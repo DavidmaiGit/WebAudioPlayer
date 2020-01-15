@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>cccc</title>
+	</head>
+	<body>
+		
+		<input type="file" onchange="encodeImageFileAsURL(this)" />
+		<p id="cc"></p>
+		<p id="a"></p>
+	  <script>
+		function encodeImageFileAsURL(element) {
+		  var file = element.files[0];
+		  var reader = new FileReader();
+		  reader.onloadend = function() {
+			console.log('RESULT', reader.result)
+			  document.getElementById("cc").innerHTML = reader.result;
+			  document.getElementById("a").innerHTML = reader.result.length;
+		  }
+		  reader.readAsDataURL(file);
+		}
+	  </script>
+	</body>
+</html>
