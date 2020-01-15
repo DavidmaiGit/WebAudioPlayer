@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>AudioPlayer</title>
+	<link href="http://hyperflex.vn/Library/fontawesome-pro-5.12.0-web/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="Library/css.css" rel="stylesheet">
+	
+<!--	bootstrap 4-->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+	
+<body>
+	<audio controls id="audioPlayer" style="width: 100%" onTimeUpdate="updateAudio()">
+		<source src="http://pc.hyperflex.vn/a.mp3" type="audio/mpeg">
+	</audio>
+	<hr>
+	<h2>Volume</h2>
+	Set Volume |<input id="inputVolume" value="100" type="range" style="width: 200px;" onMouseMove="volume()" onChange="volume()">| value: <span id="valueVolume">100</span><span>%</span>
+	<hr>
+	Tự động phát khi đang tải: <span id="spanAutoPlay"></span><br>
+	% thời gian được load trước: <span id="spanLoadTr">0</span>%<br>
+	đặt thời gian phát tại <input id="inputCurrentTime" type="number" value="0"> <button onClick="setCurrentTime()">Set Time</button><br>
+	Tổng độ dài của bài hát: <span id="duration">0</span>s <button onClick="duration()">Check</button><br>
+	Thời gian đã được load trước: <span id="buffered">0</span>s <button onClick="buffered()">Check</button><br>
+	Audio có lặp hay không: <span id="loop">false</span> | <button onClick="loop()">Loop</button><br>
+	<button onClick="cc()">cc</button><span id="cc">cccccc</span>
+	
+	<script>
+		var audioPlayer = document.getElementById("audioPlayer");
+		
+		function volume() {
+			var value = document.getElementById("inputVolume").value;
+			audioPlayer.volume = value/100;
+			document.getElementById("valueVolume").innerHTML = value;
+		}
+		
+		function checkAutoPlay() {
+			document.getElementById("spanAutoPlay").innerHTML = audioPlayer.autoplay;
+		}
+		
+		function setCurrentTime() {
+			var number = document.getElementById("inputCurrentTime").value;
+			audioPlayer.currentTime = number;
+		}
+		
+		function CurrentTime() {
+			var x = audioPlayer.currentTime;
+			document.getElementById("inputCurrentTime").value = x;
+		}
+		
+		function buffered() {
+			var x = audioPlayer.buffered.end(0);
+  			document.getElementById("buffered").innerHTML = x;
+		}
+		
+		function duration() {
+			var x = audioPlayer.duration;
+			document.getElementById("duration").innerHTML = x;
+		}
+		
+		var isLoop = false;
+		
+		function loop() {
+			if(isLoop == false) {
+				audioPlayer.loop = true;
+				document.getElementById("loop").innerHTML = "true";
+				isLoop = true;
+				return;
+			}
+			if(isLoop == true) {
+				audioPlayer.loop = false;
+				document.getElementById("loop").innerHTML = "false";
+				isLoop = false;
+				return;
+			}
+		}
+		
+		function updateAudio() {
+			CurrentTime();
+			buffered();
+		}
+		
+//		loading
+		setTimeout(function(){
+			checkAutoPlay();
+			duration();
+		}, 1000);
+		
+		function cc() {
+			var cc = document.getElementById("cc");
+			var x = cc.innerHTML.substring(0,3);
+			cc.innerHTML = x;
+			alert("cc");
+		}
+	</script>
+</body>
+</html>
